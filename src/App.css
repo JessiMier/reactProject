@@ -1,0 +1,11 @@
+h1{
+ text-align: center;
+ font-size: 36px;
+}
+
+.intro{
+    font-size: 28px;
+    margin: 40px 0;
+    font-style: italic;
+    padding: 50px;
+}
