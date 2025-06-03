@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Productos from './Productos';
 import './styleProductos.css';
-import { AppContext } from '../context/AppContext'; // ajustá la ruta
+import { AppContext } from '../context/AppContext'; 
 
 const ProductList = () => {
   const { productos, handleAddToCart } = useContext(AppContext);

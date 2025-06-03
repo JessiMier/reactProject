@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [isAuthenticated, setIsAuth] = useState(false);
 
   useEffect(() => {
-    fetch("./data/data.json")
+    fetch("https://683f2c011cd60dca33de8590.mockapi.io/api/v1/products")
       .then((res) => res.json())
       .then((data) => {
         setTimeout(() => {

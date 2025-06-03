@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context/AppContext"; // ajustá la ruta
-import "./styleProductos.css"; // si está separado
+import { AppContext } from "../context/AppContext"; 
+import "./styleProductos.css"; 
 
 const Productos = ({ producto }) => {
   const [cantidad, setCantidad] = useState(1);
