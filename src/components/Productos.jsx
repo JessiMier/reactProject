@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/AppContext"; // ajustá la ruta
+import "./styleProductos.css"; // si está separado
 
-const Productos = ({ producto, agregarCarrito }) => {
+const Productos = ({ producto }) => {
   const [cantidad, setCantidad] = useState(1);
+  const { handleAddToCart } = useContext(AppContext);
 
   const increase = () =>
     setCantidad((prev) => (prev < producto.stock ? prev + 1 : prev));
@@ -17,24 +20,20 @@ const Productos = ({ producto, agregarCarrito }) => {
       <p className="precio">${producto.price}</p>
       <p className="stock">{producto.stock}</p>
       <div className="cantidadContainer">
-        <button className="qtyButton" onClick={decrease}>
-          -
-        </button>
+        <button className="qtyButton" onClick={decrease}>-</button>
         <span style={{ color: "blue" }}>{cantidad}</span>
-        <button className="qtyButton" onClick={increase}>
-          +
-        </button>
+        <button className="qtyButton" onClick={increase}>+</button>
       </div>
-      <button onClick={() => agregarCarrito({ ...producto, quantity: cantidad })}>
+      <button onClick={() => handleAddToCart({ ...producto, quantity: cantidad })}>
         Agregar al carrito
       </button>
 
       <Link to={`/producto/${producto.id}`} className="detalle-link">
         Ver detalle
       </Link>
-
     </section>
   );
 };
 
 export default Productos;
+

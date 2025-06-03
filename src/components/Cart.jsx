@@ -1,30 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styleCart.css";
+import { AppContext } from "../context/AppContext"; 
 
-const Cart = ({ cartItems, isOpen, onClose, borrarProducto }) => {
-  const total = cartItems.reduce(
+const Cart = ({ isOpen, onClose }) => {
+  const { cart, handleDeleteFromCart } = useContext(AppContext);
+
+  const total = cart.reduce(
     (acc, item) => acc + Number(item.price) * Number(item.quantity),
     0
   );
+
   return (
     <div className={`cart-drawer ${isOpen ? "open" : ""}`}>
       <div className="cart-header">
-        <h2 style={{ color: "black", textAlign: "center" }}>
-          Carrito de compras
-        </h2>
-        <button onClick={onClose} className="close-button">
-          X
-        </button>
+        <h2 style={{ color: "black", textAlign: "center" }}>Carrito de compras</h2>
+        <button onClick={onClose} className="close-button">X</button>
       </div>
       <div className="cart-content">
-        {cartItems.length === 0 ? (
-          <p style={{ textAlign: "center", color: "red" }}>
-            El Carrito esta vacío
-          </p>
+        {cart.length === 0 ? (
+          <p style={{ textAlign: "center", color: "red" }}>El Carrito está vacío</p>
         ) : (
           <>
             <ul className="cart-item">
-              {cartItems.map((item) => (
+              {cart.map((item) => (
                 <li
                   key={item.id}
                   style={{
@@ -37,7 +35,7 @@ const Cart = ({ cartItems, isOpen, onClose, borrarProducto }) => {
                   {(Number(item.price) * Number(item.quantity)).toFixed(2)}
                   <button
                     style={{ marginLeft: "5px" }}
-                    onClick={() => borrarProducto(item)}
+                    onClick={() => handleDeleteFromCart(item)}
                   >
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -55,3 +53,4 @@ const Cart = ({ cartItems, isOpen, onClose, borrarProducto }) => {
 };
 
 export default Cart;
+

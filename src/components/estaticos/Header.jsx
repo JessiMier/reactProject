@@ -1,45 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styleEstaticos.css";
 import Cart from "../Cart.jsx";
+import { AppContext } from "../../context/AppContext"; 
 
-const Header = ({ cartItems, borrarProducto }) => {
+const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cart, handleDeleteFromCart } = useContext(AppContext);
 
-  const totalCantidad = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const totalCantidad = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    
     <header>
       <nav>
         <ul>
           <li>
-            <Link to="/" className="link">
-              Inicio
-            </Link>
+            <Link to="/" className="link">Inicio</Link>
           </li>
           <li>
-            <Link to="/acercade" className="link">
-              Sobre Nosotros
-            </Link>
+            <Link to="/acercade" className="link">Sobre Nosotros</Link>
           </li>
           <li>
-            <Link to="/productos" className="link">
-              Galeria de Productos
-            </Link>
+            <Link to="/productos" className="link">Galeria de Productos</Link>
           </li>
           <li>
-            <Link to="/contacto" className="link">
-              Contacto
-            </Link>
+            <Link to="/contacto" className="link">Contacto</Link>
           </li>
-           <li>
-            <Link to="/login" className="link">
-              Tu Cuenta
-            </Link>
+          <li>
+            <Link to="/login" className="link">Tu Cuenta</Link>
           </li>
           <li className="cartnave" style={{ position: "relative" }}>
             <button className="btnCart" onClick={() => setIsCartOpen(true)}>
@@ -64,10 +52,10 @@ const Header = ({ cartItems, borrarProducto }) => {
               </span>
             )}
             <Cart
-              cartItems={cartItems}
+              cartItems={cart}
               isOpen={isCartOpen}
               onClose={() => setIsCartOpen(false)}
-              borrarProducto={borrarProducto}
+              borrarProducto={handleDeleteFromCart}
             />
           </li>
         </ul>
@@ -80,3 +68,4 @@ const Header = ({ cartItems, borrarProducto }) => {
 };
 
 export default Header;
+
