@@ -5,7 +5,7 @@
     "description": "Zapatillas ligeras y cómodas para correr",
     "price": 59.99,
     "category": "Calzado",
-    "img": "https://www.underarmour.com.ar/on/demandware.static/-/Sites-underarmour_staging/default/dwb7e5d39b/new_images/3026929-003/3026929-003-IMAGE-1.webp",
+    "img": "/images/zapatillas.jpg",
     "stock": 5
   },
   {
@@ -14,7 +14,7 @@
     "description": "Camiseta de algodón 100% en varios colores",
     "price": 14.99,
     "category": "Ropa",
-    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_767864-MLA82272942511_022025-F.webp",
+    "img": "/images/camiseta.jpg",
     "stock": 5
   },
   {
@@ -23,7 +23,7 @@
     "description": "Jeans clásicos de corte recto",
     "price": 39.99,
     "category": "Ropa",
-    "img": "https://imagesa1.lacoste.com/dw/image/v2/BCWL_PRD/on/demandware.static/-/Sites-master/default/dw7c08c431/HF2209_RNE_24.jpg?imwidth=615&impolicy=pctp",
+    "img": "/images/pantalon.jpg",
     "stock": 5
   },
   {
@@ -32,7 +32,7 @@
     "description": "Mochila resistente con múltiples compartimentos",
     "price": 24.99,
     "category": "Accesorios",
-    "img": "https://images.bidcom.com.ar/resize?src=https://static.bidcom.com.ar/publicacionesML/productos/MOCH0127/1000x1000-MOCH0127.jpg&w=500&q=100",
+    "img": "/images/mochila.jpg",
     "stock": 5
   },
   {
@@ -41,7 +41,7 @@
     "description": "Gorra con visera curva estilo casual",
     "price": 12.99,
     "category": "Accesorios",
-    "img": "https://media.gq.com.mx/photos/633b2a180ae967af99cba1f9/master/w_960,c_limit/mejores-gorras-de-hombre-para-look-casual-y-sobrio-levis.jpg",
+    "img": "/images/gorra.jpg",
     "stock": 5
   },
   {
@@ -50,7 +50,7 @@
     "description": "Perfecta para días lluviosos, ligera y compacta",
     "price": 49.99,
     "category": "Ropa",
-    "img": "https://columbia.scene7.com/is/image/ColumbiaSportswear2/1760061_039_f?wid=768&hei=806&v=1747814230",
+    "img": "/images/chaqueta.jpg",
     "stock": 4
   },
   {
@@ -59,7 +59,7 @@
     "description": "Botas resistentes ideales para senderismo",
     "price": 89.99,
     "category": "Calzado",
-    "img": "https://acdn-us.mitiendanube.com/stores/982/617/products/bota2-1133d9dd0eed7798f617247897546626-1024-1024.jpg",
+    "img": "/images/botas.jpg",
     "stock": 3
   },
   {
@@ -68,7 +68,7 @@
     "description": "Reloj resistente al agua con cronómetro y alarma",
     "price": 29.99,
     "category": "Accesorios",
-    "img": "https://images.fravega.com/f500/b91334c2c79c7db29de2de4ff69ba125.jpg",
+    "img": "/images/reloj.jpg",
     "stock": 6
   },
   {
@@ -77,7 +77,7 @@
     "description": "Lentes con protección UV y estilo moderno",
     "price": 19.99,
     "category": "Accesorios",
-    "img": "https://www.bplusd.com.ar/wp-content/uploads/2020/06/SolskinST_Round_Blue_Front.jpg",
+    "img": "/images/lentes.jpg",
     "stock": 8
   },
   {
@@ -86,7 +86,7 @@
     "description": "Sudadera abrigadora ideal para el invierno",
     "price": 34.99,
     "category": "Ropa",
-    "img": "https://oeuvrefashion.es/41511-superlarge_default/sudadera-abrigada-con-pelo-por-dentro.jpg",
+    "img": "/images/sudadera.jpg",
     "stock": 4
   },
   {
@@ -95,7 +95,7 @@
     "description": "Leggings de alto rendimiento con cintura alta y compresión ideal para entrenamientos intensos",
     "price": 32.99,
     "category": "Ropa",
-    "img": "https://m.media-amazon.com/images/I/71mhovLKvmS._AC_SL1500_.jpg",
+    "img": "/images/leggings.jpg",
     "stock": 10
   },
   {
@@ -104,7 +104,7 @@
     "description": "Top deportivo con soporte medio, diseño ergonómico y tela respirable",
     "price": 24.99,
     "category": "Ropa",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3p7YMQTxjMxRuoIvv---n6PzWCs70OWtVdw&s",
+    "img": "/images/top.jpg",
     "stock": 8
   },
   {
@@ -113,7 +113,7 @@
     "description": "Pantalón jogger con bolsillos laterales y ajuste slim fit, ideal para entrenar o salir",
     "price": 39.99,
     "category": "Ropa",
-    "img": "https://acdn-us.mitiendanube.com/stores/004/588/573/products/2-9fb105e5314dcc343817139997143517-1024-1024.jpg",
+    "img": "/images/jogger.jpg",
     "stock": 6
   },
   {
@@ -122,7 +122,7 @@
     "description": "Zapatillas deportivas con suela de absorción y diseño urbano para correr o caminar",
     "price": 64.99,
     "category": "Calzado",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-UwLpRV2IPYklcPnZ_U8ABSviS2ns-EIPPQ&s",
+    "img": "/images/urbanrun.jpg",
     "stock": 7
   },
   {
@@ -131,7 +131,7 @@
     "description": "Remera técnica de secado rápido, ideal para entrenamientos de alta intensidad",
     "price": 19.99,
     "category": "Ropa",
-    "img": "https://www.sonder.com.ar/image/catalog/Productos/344P1HK04_a.jpg",
+    "img": "/images/dryfit.jpeg",
     "stock": 12
   },
   {
@@ -140,7 +140,7 @@
     "description": "Accesorio práctico y ligero para llevar lo esencial en tus entrenamientos o salidas",
     "price": 14.99,
     "category": "Accesorios",
-    "img": "https://latiendadelviajero.com.ar/wp-content/uploads/2023/11/rinonera-1-4.png",
+    "img": "/images/rinonera.jpg",
     "stock": 9
   },
   {
@@ -149,7 +149,7 @@
     "description": "Buzo con capucha y tela térmica para mantener el calor en climas fríos",
     "price": 44.99,
     "category": "Ropa",
-    "img": "https://http2.mlstatic.com/D_NQ_NP_778097-MLA70329882424_072023-O.webp",
+    "img": "/images/canguro.jpg",
     "stock": 5
   },
   {
@@ -158,7 +158,7 @@
     "description": "Medias deportivas con soporte en el arco y tecnología anti-transpiración",
     "price": 8.99,
     "category": "Accesorios",
-    "img": "https://voleyotros.com.ar/wp-content/uploads/2024/09/de108c-4-tripacks.jpg",
+    "img": "/images/medias.jpg",
     "stock": 15
   },
   {
@@ -167,7 +167,7 @@
     "description": "Short liviano y cómodo con bolsillo interno y malla interior",
     "price": 22.99,
     "category": "Ropa",
-    "img": "https://acdn-us.mitiendanube.com/stores/429/781/products/short-con-bolsillo-argentina-0021-0468b9d75863aad41216892582513851-640-0.jpg",
+    "img": "/images/short.jpg",
     "stock": 10
   },
   {
@@ -176,7 +176,7 @@
     "description": "Campera rompevientos ultraliviana, plegable y resistente al agua",
     "price": 54.99,
     "category": "Ropa",
-    "img": "https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/r/o/rompeviento-impermeable-con-capucha-under-armour-cloudburst-verde-700021350950388-1.jpg",
+    "img": "/images/rompevientos.jpg",
     "stock": 4
   }
 ]

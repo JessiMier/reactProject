@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-export const AppContext = createContext();
+export const CartContext = createContext();
 
-export const AppProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -55,7 +55,7 @@ export const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider
+    <CartContext.Provider
       value={{
         cart,
         productos,
@@ -68,6 +68,6 @@ export const AppProvider = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </CartContext.Provider>
   );
 };

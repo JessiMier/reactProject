@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
-import { AppContext } from "../context/AppContext"; 
+import { CartContext } from "../context/CartContext";
 
 const Contactos = () => {
-  const { cart, handleDeleteFromCart } = useContext(AppContext);
+  const { cart, handleDeleteFromCart } = useContext(CartContext);
 
   return (
     <>
@@ -18,4 +18,3 @@ const Contactos = () => {
 };
 
 export default Contactos;
-

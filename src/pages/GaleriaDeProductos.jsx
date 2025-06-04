@@ -3,10 +3,11 @@ import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
 import ProductList from "../components/ProductList";
 import loading from "../assets/loading2.gif";
-import { AppContext } from "../context/AppContext"; 
+import { CartContext } from "../context/CartContext";
 
 const GaleriaDeProductos = () => {
-  const { productos, cargando, handleAddToCart, cart, handleDeleteFromCart } = useContext(AppContext);
+  const { productos, cargando, handleAddToCart, cart, handleDeleteFromCart } =
+    useContext(CartContext);
 
   return (
     <>
@@ -32,4 +33,3 @@ const GaleriaDeProductos = () => {
 };
 
 export default GaleriaDeProductos;
-

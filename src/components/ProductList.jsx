@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Productos from './Productos';
 import './styleProductos.css';
-import { AppContext } from '../context/AppContext'; 
+import { CartContext } from '../context/CartContext'; 
 
 const ProductList = () => {
-  const { productos, handleAddToCart } = useContext(AppContext);
+  const { productos, handleAddToCart } = useContext(CartContext);
 
   return (
     <div className="product-list">

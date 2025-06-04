@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
-import { AppContext } from "../context/AppContext"; 
+import { CartContext } from "../context/CartContext";
 
 const DetalleProducto = () => {
-  const { productos, cart, handleAddToCart, handleDeleteFromCart } = useContext(AppContext);
+  const { productos, cart, handleAddToCart, handleDeleteFromCart } =
+    useContext(CartContext);
   const { id } = useParams();
   const producto = productos.find((item) => item.id === parseInt(id));
 
@@ -13,13 +14,16 @@ const DetalleProducto = () => {
     return (
       <>
         <Header cartItems={cart} borrarProducto={handleDeleteFromCart} />
-        <p style={{ textAlign: "center", color: "red" }}>Producto no encontrado</p>
+        <p style={{ textAlign: "center", color: "red" }}>
+          Producto no encontrado
+        </p>
         <Footer />
       </>
     );
   }
 
-  const cantidadEnCarrito = cart.find((item) => item.id === producto.id)?.quantity || 0;
+  const cantidadEnCarrito =
+    cart.find((item) => item.id === producto.id)?.quantity || 0;
 
   return (
     <>
@@ -45,7 +49,10 @@ const DetalleProducto = () => {
           </button>
 
           {cantidadEnCarrito > 0 && (
-            <button onClick={() => handleDeleteFromCart(producto)} style={{ marginLeft: "10px" }}>
+            <button
+              onClick={() => handleDeleteFromCart(producto)}
+              style={{ marginLeft: "10px" }}
+            >
               Quitar del carrito
             </button>
           )}
@@ -57,4 +64,3 @@ const DetalleProducto = () => {
 };
 
 export default DetalleProducto;
-

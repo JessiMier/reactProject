@@ -3,16 +3,11 @@ import Footer from "../components/estaticos/Footer";
 import Header from "../components/estaticos/Header";
 import ProductList from "../components/ProductList";
 import loading from "../assets/loading2.gif";
-import { AppContext } from "../context/AppContext";
+import { CartContext } from "../context/CartContext";
 
 const Home = () => {
-  const {
-    cart,
-    productos,
-    cargando,
-    handleAddToCart,
-    handleDeleteFromCart,
-  } = useContext(AppContext);
+  const { cart, productos, cargando, handleAddToCart, handleDeleteFromCart } =
+    useContext(CartContext);
 
   return (
     <>
@@ -20,9 +15,10 @@ const Home = () => {
       <main>
         <h1>Bienvenidos a Urbaniza</h1>
         <p className="intro">
-          🏃‍♀️ Ropa deportiva con flow urbano y básicos para tu día a día. Entrená, salí, viví tu día con onda
-          y comodidad. Conocé nuestra colección y llevá tu estilo a otro nivel.
-          🔥 Nuevos lanzamientos todas las semanas.
+          🏃‍♀️ Ropa deportiva con flow urbano y básicos para tu día a día.
+          Entrená, salí, viví tu día con onda y comodidad. Conocé nuestra
+          colección y llevá tu estilo a otro nivel. 🔥 Nuevos lanzamientos todas
+          las semanas.
         </p>
         {cargando ? (
           <div

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./styleCart.css";
-import { AppContext } from "../context/AppContext"; 
+import { CartContext } from "../context/CartContext"; 
 
 const Cart = ({ isOpen, onClose }) => {
-  const { cart, handleDeleteFromCart } = useContext(AppContext);
+  const { cart, handleDeleteFromCart } = useContext(CartContext);
 
   const total = cart.reduce(
     (acc, item) => acc + Number(item.price) * Number(item.quantity),

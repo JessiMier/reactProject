@@ -1,11 +1,50 @@
-h1{
- text-align: center;
- font-size: 36px;
+h1 {
+  text-align: center;
+  font-size: 36px;
 }
 
-.intro{
-    font-size: 28px;
-    margin: 40px 0;
-    font-style: italic;
-    padding: 50px;
+.intro {
+  font-size: 28px;
+  margin: 40px 0;
+  font-style: italic;
+  padding: 50px;
+}
+
+.link.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-bottom: 1rem;
+  width: 400px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
