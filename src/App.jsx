@@ -1,7 +1,6 @@
 import "./App.css";
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import { CartContext } from "./context/CartContext";
 import Home from "./pages/Home";
 import AcercaDe from "./pages/AcercaDe";
 import GaleriaDeProductos from "./pages/GaleriaDeProductos";
@@ -11,9 +10,11 @@ import Admin from "./pages/Admin";
 import DetalleProducto from "./pages/DetalleProducto";
 import Login from "./pages/Login";
 import RutaProtegida from "./auth/RutaProtegida";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-  const { isAuthenticated } = useContext(CartContext);
+ const { isAuthenticated } = useAuth();
+ console.log("isAuthenticated en App:", isAuthenticated);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -25,8 +26,8 @@ function App() {
         path="/admin"
         element={
           <RutaProtegida isAuthenticated={isAuthenticated}>
-            {" "}
-            <Admin />{" "}
+            
+            <Admin />
           </RutaProtegida>
         }
       />

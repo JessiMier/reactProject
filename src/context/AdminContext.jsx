@@ -2,7 +2,7 @@ import {  createContext, useEffect, useState } from "react";
 
 export const AdminContext = createContext();
 
-export const AdminProvider =({Children})=>{
+export const AdminProvider =({children})=>{
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -61,6 +61,11 @@ export const AdminProvider =({Children})=>{
   };
 
   const actulizarProducto = async (producto) => {
+    
+    if (!producto.id) {
+    alert("El producto no tiene id válido");
+    return;
+  }
     try {
       const respuesta = await fetch(`${apiUrl}/${producto.id}`, {
         method: "PUT",
@@ -111,7 +116,7 @@ export const AdminProvider =({Children})=>{
             eliminarProducto
 
         }}>
-            {Children}
+            {children}
         </AdminContext.Provider>
     )
 }

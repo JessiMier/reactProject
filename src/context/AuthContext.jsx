@@ -8,20 +8,21 @@ export const AuthProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const { setIsAuth } = useContext(CartContext);
   const navigate = useNavigate();
   const [role, setRole] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuth") === "true";
     const userRole = localStorage.getItem("role") || "";
 
     if (isAuthenticated && userRole === "admin") {
-      setIsAuth(true);
+     setIsAuthenticated(true);
       setRole(userRole);
       navigate("/admin");
     } else if (isAuthenticated && userRole === "cliente") {
-      setIsAuth(true);
+     setIsAuthenticated(true);
       setRole(userRole);
 
       navigate("/");
@@ -53,12 +54,12 @@ export const AuthProvider = ({ children }) => {
         console.log("User role:", foundUser.role);
 
         if (foundUser.role === "admin") {
-          setIsAuth(true);
+          setIsAuthenticated(true);
           localStorage.setItem("isAuth", true);
           localStorage.setItem("role", foundUser.role);
           navigate("/admin");
         } else {
-          setIsAuth(true);
+          setIsAuthenticated(true);
           localStorage.setItem("isAuth", true);
           localStorage.setItem("role", foundUser.role);
           navigate("/");
@@ -82,6 +83,7 @@ export const AuthProvider = ({ children }) => {
         handleSubmit,
         errors,
         role,
+        isAuthenticated
       }}
     >
       {children}

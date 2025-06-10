@@ -37,7 +37,7 @@ const Admin = () => {
                 <button
                   className="navButton"
                   onClick={() => {
-                    setIsAuth(false);
+                    setIsAuth(true);
                     navigate("/");
                     localStorage.removeItem("isAuth");
                   }}
@@ -72,6 +72,7 @@ const Admin = () => {
                   <button
                     className="editButton"
                     onClick={() => {
+                      console.log("Editar producto con id:", product.id);
                       setOpenEditor(true);
                       setSeleccionado(product);
                     }}

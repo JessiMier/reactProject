@@ -20,11 +20,11 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
       }}
     >
       <h2>Editar Producto</h2>
-
-      <div className="form-group">
+       
+       <div className="form-group">
         <label>ID:</label>
-        <input type="number" name="id" value={producto.id || ""} readOnly />
-      </div>
+        <input type="text" value={producto.id || ""} readOnly />
+      </div> 
 
       <div className="form-group">
         <label>Nombre:</label>

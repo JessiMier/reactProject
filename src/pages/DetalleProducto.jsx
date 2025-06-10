@@ -5,10 +5,15 @@ import Footer from "../components/estaticos/Footer";
 import { CartContext } from "../context/CartContext";
 
 const DetalleProducto = () => {
-  const { productos } =
-    useContext(CartContext);
+  const {
+    productos,
+    cart,
+    handleAddToCart,
+    handleDeleteFromCart,
+  } = useContext(CartContext);
+
   const { id } = useParams();
-  const producto = productos.find((item) => item.id === parseInt(id));
+  const producto = productos.find((item) => item.id.toString() === id);
 
   if (!producto) {
     return (
@@ -27,7 +32,7 @@ const DetalleProducto = () => {
 
   return (
     <>
-      <Header />
+      <Header cartItems={cart} borrarProducto={handleDeleteFromCart} />
       <main>
         <div
           style={{
