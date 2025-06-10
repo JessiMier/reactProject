@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/CartContext"; 
-import "./styleProductos.css"; 
+import { CartContext } from "../context/CartContext";
+import "./styleProductos.css";
 
 const Productos = ({ producto }) => {
   const [cantidad, setCantidad] = useState(1);
@@ -20,11 +20,17 @@ const Productos = ({ producto }) => {
       <p className="precio">${producto.price}</p>
       <p className="stock">{producto.stock}</p>
       <div className="cantidadContainer">
-        <button className="qtyButton" onClick={decrease}>-</button>
+        <button className="qtyButton" onClick={decrease}>
+          -
+        </button>
         <span style={{ color: "blue" }}>{cantidad}</span>
-        <button className="qtyButton" onClick={increase}>+</button>
+        <button className="qtyButton" onClick={increase}>
+          +
+        </button>
       </div>
-      <button onClick={() => handleAddToCart({ ...producto, quantity: cantidad })}>
+      <button
+        onClick={() => handleAddToCart({ ...producto, quantity: cantidad })}
+      >
         Agregar al carrito
       </button>
 
@@ -36,4 +42,3 @@ const Productos = ({ producto }) => {
 };
 
 export default Productos;
-

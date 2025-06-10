@@ -1,6 +1,4 @@
-import React, { useState, useContext } from "react";
 
-import { CartContext } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 const Login = () => {
   const { email, setEmail, password, setPassword, handleSubmit, errors } =

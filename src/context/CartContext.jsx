@@ -7,23 +7,30 @@ export const CartProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
-  const [isAuthenticated, setIsAuth] = useState(false);
+  const [isAuthenticated, setIsAuth] = useState(
+    localStorage.getItem("isAuth") === "true"
+  );
+  const [busqueda, setBusqueda] = useState("");
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
   useEffect(() => {
     fetch("https://683f2c011cd60dca33de8590.mockapi.io/api/v1/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setTimeout(() => {
-          setProductos(data);
-          setCargando(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log("Error", error);
-        setCargando(false);
-        setError(true);
-      });
+      .then(respuesta => respuesta.json())
+            .then(datos => {
+                setTimeout(() => {
+                    setProductos(datos)
+                    setCargando(false)
+                }, 2000)
+            })
+            .catch(error => {
+                console.log('Error', error)
+                setCargando(false)
+                setError(true)
+            })
   }, []);
+
+  const productosFiltrados = productos.filter((producto)=> producto?.name.toLowerCase().includes(busqueda.toLowerCase()))
+
 
   const handleAddToCart = (product) => {
     const productInCart = cart.find((item) => item.id === product.id);
@@ -65,6 +72,11 @@ export const CartProvider = ({ children }) => {
         setIsAuth,
         handleAddToCart,
         handleDeleteFromCart,
+        productosFiltrados,
+        busqueda,
+        setBusqueda,
+        categoriaSeleccionada,
+        setCategoriaSeleccionada,
       }}
     >
       {children}

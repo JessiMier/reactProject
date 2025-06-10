@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Footer from "../components/estaticos/Footer";
 import Header from "../components/estaticos/Header";
 import ProductList from "../components/ProductList";
@@ -6,12 +6,11 @@ import loading from "../assets/loading2.gif";
 import { CartContext } from "../context/CartContext";
 
 const Home = () => {
-  const { cart, productos, cargando, handleAddToCart, handleDeleteFromCart } =
-    useContext(CartContext);
+  const { cargando } = useContext(CartContext);
 
   return (
     <>
-      <Header borrarProducto={handleDeleteFromCart} cartItems={cart} />
+      <Header />
       <main>
         <h1>Bienvenidos a Urbaniza</h1>
         <p className="intro">
@@ -32,7 +31,7 @@ const Home = () => {
             <img src={loading} alt="loading" />
           </div>
         ) : (
-          <ProductList agregarCarrito={handleAddToCart} productos={productos} />
+          <ProductList  />
         )}
       </main>
       <Footer />

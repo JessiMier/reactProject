@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function FormularioProducto({ onAgregar }) {
   const [producto, setProducto] = useState({
@@ -102,7 +102,7 @@ function FormularioProducto({ onAgregar }) {
         <input
           type="text"
           name="category"
-          value={producto.category}
+          value={producto.category || ''}
           onChange={handleChange}
           required
         />

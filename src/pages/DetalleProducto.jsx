@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
 import { CartContext } from "../context/CartContext";
 
 const DetalleProducto = () => {
-  const { productos, cart, handleAddToCart, handleDeleteFromCart } =
+  const { productos } =
     useContext(CartContext);
   const { id } = useParams();
   const producto = productos.find((item) => item.id === parseInt(id));
@@ -27,7 +27,7 @@ const DetalleProducto = () => {
 
   return (
     <>
-      <Header cartItems={cart} borrarProducto={handleDeleteFromCart} />
+      <Header />
       <main>
         <div
           style={{

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
 import { CartContext } from "../context/CartContext";
