@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "./CartContext";
 
 const AuthContext = createContext();
 
@@ -12,25 +11,24 @@ export const AuthProvider = ({ children }) => {
   const [role, setRole] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem("isAuth") === "true";
-    const userRole = localStorage.getItem("role") || "";
+    const storedAuth = localStorage.getItem("isAuth") === "true";
+    const storedRole = localStorage.getItem("role") || "";
 
-    if (isAuthenticated && userRole === "admin") {
-     setIsAuthenticated(true);
-      setRole(userRole);
-      navigate("/admin");
-    } else if (isAuthenticated && userRole === "cliente") {
-     setIsAuthenticated(true);
-      setRole(userRole);
-
-      navigate("/");
+    if (storedAuth) {
+      setIsAuthenticated(true);
+      setRole(storedRole);
+      if (storedRole === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     }
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({}); 
     let validationErrors = {};
     if (!email) validationErrors.email = "Email es requerido";
     if (!password) validationErrors.password = "Password es requerido";
@@ -41,7 +39,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const res = await fetch("data/users.json");
+      const res = await fetch("/data/users.json"); 
+      if (!res.ok) throw new Error("No se pudo cargar el archivo de usuarios");
       const users = await res.json();
 
       const foundUser = users.find(
@@ -49,19 +48,16 @@ export const AuthProvider = ({ children }) => {
       );
 
       if (!foundUser) {
-        setErrors({ email: "credenciales invalidas" });
+        setErrors({ email: "Credenciales inválidas" });
       } else {
-        console.log("User role:", foundUser.role);
+        setIsAuthenticated(true);
+        setRole(foundUser.role);
+        localStorage.setItem("isAuth", "true");
+        localStorage.setItem("role", foundUser.role);
 
         if (foundUser.role === "admin") {
-          setIsAuthenticated(true);
-          localStorage.setItem("isAuth", true);
-          localStorage.setItem("role", foundUser.role);
           navigate("/admin");
         } else {
-          setIsAuthenticated(true);
-          localStorage.setItem("isAuth", true);
-          localStorage.setItem("role", foundUser.role);
           navigate("/");
         }
       }
@@ -72,7 +68,15 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
-
+   const logout = () => {
+    setIsAuthenticated(false);
+    setRole("");
+    setEmail("");
+    setPassword("");
+    localStorage.removeItem("isAuth");
+    localStorage.removeItem("role");
+    navigate("/login");
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -83,7 +87,8 @@ export const AuthProvider = ({ children }) => {
         handleSubmit,
         errors,
         role,
-        isAuthenticated
+        isAuthenticated,
+        logout,
       }}
     >
       {children}
@@ -92,3 +97,4 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+

@@ -42,6 +42,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         <input
           type="number"
           name="price"
+          step="0.01"
           value={producto.price || ""}
           onChange={handleChange}
           required
