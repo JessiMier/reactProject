@@ -13,26 +13,26 @@ export const CartProvider = ({ children }) => {
   );
   const [busqueda, setBusqueda] = useState("");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
-  
 
   useEffect(() => {
     fetch("https://683f2c011cd60dca33de8590.mockapi.io/api/v1/products")
-      .then(respuesta => respuesta.json())
-            .then(datos => {
-                setTimeout(() => {
-                    setProductos(datos)
-                    setCargando(false)
-                }, 2000)
-            })
-            .catch(error => {
-                console.log('Error', error)
-                setCargando(false)
-                setError(true)
-            })
+      .then((respuesta) => respuesta.json())
+      .then((datos) => {
+        setTimeout(() => {
+          setProductos(datos);
+          setCargando(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        setCargando(false);
+        setError(true);
+      });
   }, []);
 
-  const productosFiltrados = productos.filter((producto)=> producto?.name.toLowerCase().includes(busqueda.toLowerCase()))
-
+  const productosFiltrados = productos.filter((producto) =>
+    producto?.name.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   const handleAddToCart = (product) => {
     const productInCart = cart.find((item) => item.id === product.id);
@@ -48,7 +48,7 @@ export const CartProvider = ({ children }) => {
       toast.success(`El producto ${product.name} se ha agregado al carrito`, {
         position: "top-right",
         autoClose: 1000,
-      })
+      });
       setCart([...cart, product]);
     }
   };
@@ -68,9 +68,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-  setCart([]);
+    setCart([]);
   };
-  
+
   return (
     <CartContext.Provider
       value={{

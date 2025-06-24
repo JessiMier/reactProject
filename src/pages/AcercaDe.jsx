@@ -11,14 +11,17 @@ const AcercaDe = () => {
     <>
       <Header borrarProducto={handleDeleteFromCart} cartItems={cart} />
 
-      <main className="container my-5">
-        <h1 className="text-center mb-4 text-uppercase fw-bold">Sobre Nosotros</h1>
+      <main className="container">
+        <h1 className="text-center mb-4 fw-bold titulo-principal">
+          Sobre Nosotros
+        </h1>
 
         <div className="text-center mb-5">
           <p className="fs-3">
-            En <strong>Urbaniza</strong>, creemos que la moda urbana es más que estilo:
-            es una actitud. Nacimos con la idea de vestir a personas auténticas, que
-            buscan comodidad, personalidad y libertad de expresión.
+            En <strong className="text-primary">Urbaniza</strong>, creemos que
+            la moda urbana es más que estilo: es una actitud. Nacimos con la
+            idea de vestir a personas auténticas, que buscan comodidad,
+            personalidad y libertad de expresión.
           </p>
         </div>
 
@@ -33,9 +36,10 @@ const AcercaDe = () => {
           <div className="col-md-6 text-center">
             <h3 className="text-primary fw-semibold">Nuestra historia</h3>
             <p className="fs-4">
-              Urbaniza nació en 2021 como un pequeño proyecto independiente en Buenos Aires.
-              Hoy somos una comunidad que ama el arte callejero, la cultura skate,
-              el diseño y la música. Cada prenda está pensada para que te sientas vos mismo.
+              Urbaniza nació en 2021 como un pequeño proyecto independiente en
+              Buenos Aires. Hoy somos una comunidad que ama el arte callejero,
+              la cultura skate, el diseño y la música. Cada prenda está pensada
+              para que te sientas vos mismo.
             </p>
           </div>
         </div>
@@ -51,14 +55,15 @@ const AcercaDe = () => {
           <div className="col-md-6 text-center">
             <h3 className="text-primary fw-semibold">Lo que creemos</h3>
             <p className="fs-4">
-              Nos importa la sustentabilidad, los procesos justos y apoyar lo local.
-              Nuestra meta es que cada persona que elige Urbaniza se sienta parte de algo más grande.
+              Nos importa la sustentabilidad, los procesos justos y apoyar lo
+              local. Nuestra meta es que cada persona que elige Urbaniza se
+              sienta parte de algo más grande.
             </p>
           </div>
         </div>
 
         <div className="text-center my-5">
-          <Link to="/" className="btn btn-dark btn-lg px-4">
+          <Link to="/" className="btn btn-primary btn-lg px-4">
             Ir a la tienda
           </Link>
         </div>
@@ -70,6 +75,3 @@ const AcercaDe = () => {
 };
 
 export default AcercaDe;
-
-
-

@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <Header />
       <main>
-        <h1>Bienvenidos a Urbaniza</h1>
+        <h1 className="titulo-principal">Bienvenidos a Urbaniza</h1>
         <p className="intro container">
           🏃‍♀️ Ropa deportiva con flow urbano y básicos para tu día a día.
           Entrená, salí, viví tu día con onda y comodidad. Conocé nuestra

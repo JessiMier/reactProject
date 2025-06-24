@@ -6,12 +6,12 @@ import loading from "../assets/loading2.gif";
 import { CartContext } from "../context/CartContext";
 
 const GaleriaDeProductos = () => {
-  const {  cargando } = useContext(CartContext);
+  const { cargando } = useContext(CartContext);
 
   return (
     <>
       <Header />
-      <h1>Galeria De Productos</h1>
+      <h1 className="titulo-principal">Galeria De Productos</h1>
       {cargando ? (
         <div
           style={{

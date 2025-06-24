@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import DetalleProducto from "./pages/DetalleProducto";
 import Login from "./pages/Login";
 import RutaProtegida from "./auth/RutaProtegida";
-import Denegado from "./pages/Denegado"; // ← añadí esta página si no existe
+import Denegado from "./pages/Denegado"; 
 
 function App() {
   return (

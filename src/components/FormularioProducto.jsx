@@ -22,11 +22,11 @@ function FormularioProducto({ onAgregar }) {
     if (!producto.name.trim()) {
       nuevosErrores.name = "El nombre es obligatorio.";
     }
-    if (!producto.price || producto.price <= 0) {
-      nuevosErrores.price = "El precio debe ser mayor a 0.";
+    if (!producto.price || producto.price <= 0.0) {
+      nuevosErrores.price = "El precio debe ser mayor a 0.00";
     }
-    if (!producto.category.trim() || producto.category.length < 5) {
-      nuevosErrores.category = "La categoría debe tener al menos 5 caracteres.";
+    if (!producto.category.trim() || producto.category.length < 3) {
+      nuevosErrores.category = "La categoría debe tener al menos 3 caracteres.";
     }
     if (!producto.description.trim() || producto.description.length < 10) {
       nuevosErrores.description =
@@ -150,4 +150,3 @@ function FormularioProducto({ onAgregar }) {
 }
 
 export default FormularioProducto;
-

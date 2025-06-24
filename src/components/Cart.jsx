@@ -19,14 +19,16 @@ const Cart = ({ isOpen, onClose }) => {
       confirmButtonText: "Cerrar",
     });
     clearCart();
-    onClose(); // Opcional: cerrar carrito
+    onClose();
   };
 
   return (
     <div className={`cart-drawer ${isOpen ? "open" : ""}`}>
       <div className="cart-header">
         <h2>Carrito de compras</h2>
-        <button onClick={onClose} className="close-button">X</button>
+        <button onClick={onClose} className="close-button">
+          X
+        </button>
       </div>
 
       <div className="cart-content">
@@ -36,27 +38,40 @@ const Cart = ({ isOpen, onClose }) => {
           <>
             <ul className="cart-item">
               {cart.map((item) => (
-                <li key={item.id}>
-                  <span>
-                    {item.name} - ${item.price} x {item.quantity}
-                  </span>
-                  <span>
-                    ${ (Number(item.price) * Number(item.quantity)).toFixed(2) }
-                    <button onClick={() => handleDeleteFromCart(item)}>
-                      <i className="fa-solid fa-trash"></i>
-                    </button>
-                  </span>
+                <li key={item.id} className="cart-item-detail">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="cart-item-img"
+                  />
+                  <div className="cart-item-info">
+                    <p className="cart-item-name">{item.name}</p>
+                    <p className="cart-item-price">
+                      ${item.price} x {item.quantity} ={" "}
+                      <strong>
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </strong>
+                    </p>
+                  </div>
+                  <button onClick={() => handleDeleteFromCart(item)}>
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
                 </li>
               ))}
             </ul>
-
             <h3 className="cart-total">Total: ${total.toFixed(2)}</h3>
 
             <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-outline-danger w-50 me-2" onClick={clearCart}>
+              <button
+                className="btn btn-outline-danger w-50 me-2"
+                onClick={clearCart}
+              >
                 Vaciar carrito
               </button>
-              <button className="btn btn-success w-50" onClick={finalizarCompra}>
+              <button
+                className="btn btn-success w-50"
+                onClick={finalizarCompra}
+              >
                 Finalizar compra
               </button>
             </div>
@@ -68,5 +83,3 @@ const Cart = ({ isOpen, onClose }) => {
 };
 
 export default Cart;
-
-

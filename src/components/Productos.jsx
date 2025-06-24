@@ -12,9 +12,7 @@ const Productos = ({ producto }) => {
 
   return (
     <div className="card h-100 shadow-sm">
-      <div
-        className="imagen-container"
-      >
+      <div className="imagen-container">
         <img
           src={producto.img}
           alt={producto.name}
@@ -24,7 +22,9 @@ const Productos = ({ producto }) => {
 
       <div className="card-body d-flex flex-column justify-content-between text-center p-2">
         <h6 className="card-title mb-1 fs-4">{producto.name}</h6>
-        <p className="card-text fw-bold mb-2 text-primary fs-5">${producto.price}</p>
+        <p className="card-text fw-bold mb-2 text-primary fs-5">
+          ${producto.price}
+        </p>
 
         <div className="d-flex align-items-center justify-content-center mb-2 fs-5">
           <button
@@ -64,4 +64,3 @@ const Productos = ({ producto }) => {
 };
 
 export default Productos;
-

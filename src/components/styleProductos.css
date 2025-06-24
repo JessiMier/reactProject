@@ -36,3 +36,9 @@
   background-color: #ccc;
 } 
 
+@media (min-width: 1400px) {
+  .col-xxl-2 {
+    flex: 0 0 auto;
+    width: 16.66666667%;
+  }
+}
