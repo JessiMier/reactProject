@@ -6,39 +6,39 @@ import { CartContext } from "../context/CartContext";
 const ProductList = () => {
   const { productosFiltrados, busqueda, setBusqueda } = useContext(CartContext);
 
-  console.log(busqueda);
-
   return (
-    <>
-      <input
-        type="text"
-        placeholder="Buscar productos"
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        style={{
-          padding: "10px",
-          width: "100%",
-          maxWidth: "400px",
-          borderRadius: "8px",
-          border: "1px solid #ccc",
-          marginBottom: "20px",
-          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-          fontSize: "16px",
-        }}
-      />
-      <div className="product-list">
+    <div className="container-fluid my-4 product-list">
+      <div className="row justify-content-center mb-4">
+        <div className="col-md-6">
+          <input
+            type="text"
+            className="form-control fs-4 mt-4"
+            placeholder="Buscar productos"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="row mt-4 justify-content-center">
         {productosFiltrados.length === 0 ? (
-          <p>No se encontraron productos.</p>
+          <div className="col-12 text-center">
+            <p>No se encontraron productos.</p>
+          </div>
         ) : (
           productosFiltrados.map((producto) => (
-            <div className="product-item" key={producto.id}>
-              <Productos key={producto.id} producto={producto} />
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mb-4" key={producto.id}>
+              <Productos producto={producto} />
             </div>
           ))
         )}
       </div>
-    </>
+    </div>
   );
 };
 
 export default ProductList;
+
+
+
+

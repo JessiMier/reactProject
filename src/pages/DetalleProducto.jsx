@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Header from "../components/estaticos/Header";
 import Footer from "../components/estaticos/Footer";
 import { CartContext } from "../context/CartContext";
@@ -13,15 +13,15 @@ const DetalleProducto = () => {
   } = useContext(CartContext);
 
   const { id } = useParams();
-  const producto = productos.find((item) => item.id.toString() === id);
+  const producto = productos.find((item) => String(item.id) === id);
 
   if (!producto) {
     return (
       <>
         <Header cartItems={cart} borrarProducto={handleDeleteFromCart} />
-        <p style={{ textAlign: "center", color: "red" }}>
-          Producto no encontrado
-        </p>
+        <div className="container my-5 text-center">
+          <p className="text-danger fw-bold">Producto no encontrado</p>
+        </div>
         <Footer />
       </>
     );
@@ -33,39 +33,54 @@ const DetalleProducto = () => {
   return (
     <>
       <Header cartItems={cart} borrarProducto={handleDeleteFromCart} />
-      <main>
-        <div
-          style={{
-            padding: "2rem",
-            backgroundColor: "#3f3f3f",
-            width: "400px",
-            textAlign: "center",
-            margin: "auto",
-            boxShadow: "0 2px 8px rgba(223, 214, 214, 0.81)",
-          }}
-        >
-          <h2>{producto.name}</h2>
-          <p>{producto.description}</p>
-          <p>Precio: ${producto.price}</p>
-          <p>Cantidad en carrito: {cantidadEnCarrito}</p>
 
-          <button onClick={() => handleAddToCart({ ...producto, quantity: 1 })}>
-            Agregar al carrito
-          </button>
+      <main className="container my-5 d-flex justify-content-center">
+        <div className="card shadow-lg p-4 w-100" style={{ maxWidth: "550px" }}>
+          <div className="card-body text-center">
 
-          {cantidadEnCarrito > 0 && (
-            <button
-              onClick={() => handleDeleteFromCart(producto)}
-              style={{ marginLeft: "10px" }}
-            >
-              Quitar del carrito
-            </button>
-          )}
+            {producto.img && (
+              <img
+                src={producto.img}
+                alt={producto.name}
+                className="img-fluid mb-3 rounded"
+                style={{ maxHeight: "250px", objectFit: "cover" }}
+              />
+            )}
+
+            <h2 className="card-title mb-3 fs-2">{producto.name}</h2>
+            <p className="card-text fs-4">{producto.description}</p>
+            <p className="fw-bold fs-5">Precio: ${producto.price}</p>
+            <p className="text-muted fs-5">Cantidad en carrito: {cantidadEnCarrito}</p>
+
+            <div className="d-flex justify-content-center gap-3 flex-wrap mt-3">
+              <button
+                className="btn btn-primary fs-5"
+                onClick={() => handleAddToCart({ ...producto, quantity: 1 })}
+              >
+                Agregar al carrito
+              </button>
+
+              {cantidadEnCarrito > 0 && (
+                <button
+                  className="btn btn-success fs-5"
+                  onClick={() => handleDeleteFromCart(producto)}
+                >
+                  Quitar del carrito
+                </button>
+              )}
+
+              <Link to="/" className="btn btn-outline-secondary fs-5">
+                Volver a la tienda
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
+
       <Footer />
     </>
   );
 };
 
 export default DetalleProducto;
+

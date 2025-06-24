@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const CartContext = createContext();
 
@@ -12,6 +13,7 @@ export const CartProvider = ({ children }) => {
   );
   const [busqueda, setBusqueda] = useState("");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
+  
 
   useEffect(() => {
     fetch("https://683f2c011cd60dca33de8590.mockapi.io/api/v1/products")
@@ -43,6 +45,10 @@ export const CartProvider = ({ children }) => {
         )
       );
     } else {
+      toast.success(`El producto ${product.name} se ha agregado al carrito`, {
+        position: "top-right",
+        autoClose: 1000,
+      })
       setCart([...cart, product]);
     }
   };
@@ -61,6 +67,10 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+  setCart([]);
+  };
+  
   return (
     <CartContext.Provider
       value={{
@@ -72,6 +82,7 @@ export const CartProvider = ({ children }) => {
         setIsAuth,
         handleAddToCart,
         handleDeleteFromCart,
+        clearCart,
         productosFiltrados,
         busqueda,
         setBusqueda,

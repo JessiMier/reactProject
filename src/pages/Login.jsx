@@ -1,92 +1,55 @@
-
+import Header from "../components/estaticos/Header";
+import Footer from "../components/estaticos/Footer";
 import { useAuth } from "../context/AuthContext";
+
 const Login = () => {
   const { email, setEmail, password, setPassword, handleSubmit, errors } =
     useAuth();
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        maxWidth: "400px",
-        margin: "auto",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label
-          htmlFor="formBasicEmail"
-          style={{ marginBottom: "0.5rem", fontWeight: "bold" }}
-        >
-          Email address
-        </label>
-        <input
-          id="formBasicEmail"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{
-            padding: "0.5rem",
-            border: `1px solid ${errors.email ? "red" : "#ced4da"}`,
-            borderRadius: "0.25rem",
-          }}
-        />
-        {errors.email && (
-          <div
-            style={{ color: "red", fontSize: "0.875rem", marginTop: "0.25rem" }}
-          >
-            {errors.email}
-          </div>
-        )}
-      </div>
+    <>
+    <Header/>
+    <div className="container mt-5 my-auto">
+      <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: "600px" }}>
+        <div className="mb-3">
+          <label htmlFor="formBasicEmail" className="form-label fw-bold fs-4">
+            Correo Electrónico
+          </label>
+          <input
+            type="email"
+            className={`form-control ${errors.email ? "is-invalid" : ""} p-2 fs-5` }
+            id="formBasicEmail"
+            placeholder="Ingrese su email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+        </div>
 
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label
-          htmlFor="formBasicPassword"
-          style={{ marginBottom: "0.5rem", fontWeight: "bold" }}
-        >
-          Password
-        </label>
-        <input
-          id="formBasicPassword"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{
-            padding: "0.5rem",
-            border: `1px solid ${errors.password ? "red" : "#ced4da"}`,
-            borderRadius: "0.25rem",
-          }}
-        />
-        {errors.password && (
-          <div
-            style={{ color: "red", fontSize: "0.875rem", marginTop: "0.25rem" }}
-          >
-            {errors.password}
-          </div>
-        )}
-      </div>
+        <div className="mb-3">
+          <label htmlFor="formBasicPassword" className="form-label fw-bold fs-4">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            className={`form-control ${errors.password ? "is-invalid" : ""}p-2 fs-5`}
+            id="formBasicPassword"
+            placeholder="Ingrese su contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+        </div>
 
-      <button
-        type="submit"
-        style={{
-          backgroundColor: "#007bff",
-          color: "white",
-          padding: "0.75rem",
-          border: "none",
-          borderRadius: "0.25rem",
-          cursor: "pointer",
-          fontSize: "1rem",
-        }}
-      >
-        Submit
-      </button>
-    </form>
+        <button type="submit" className="btn btn-primary w-100 fs-4">
+          Iniciar sesión
+        </button>
+      </form>
+    </div>
+    <Footer/>
+    </>
   );
 };
 
 export default Login;
+

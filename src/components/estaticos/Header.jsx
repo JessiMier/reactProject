@@ -33,7 +33,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink to="/contacto" className="link">
-              Contacto
+              Registrate
             </NavLink>
           </li>
 
@@ -88,7 +88,7 @@ const Header = () => {
         </ul>
       </nav>
       <div>
-        <img src="/images/logo2.png" alt="logo" className="logo" />
+        <img src="/images/logo2.png" alt="logo" className="logo mb-3" />
       </div>
     </header>
   );

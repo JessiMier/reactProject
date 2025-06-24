@@ -1,59 +1,24 @@
-.card {
-  background-color: aliceblue;
-  border-radius: 16px;
-  box-shadow: 1px 1px 1px 2px rgb(97, 151, 231);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.3s ease;
-  margin-bottom: 15px;
-}
-
-.imagenContainer {
-  width: 200px;
-  height: 180px;
-  background-color: #f0f0f0;
-  border-radius: 12px;
+.imagen-container {
+  width: 100%;
+  height: 300px; 
   overflow: hidden;
-  margin-bottom: 12px;
+  background-color: #f0f0f0;
+  border-radius: 12px 12px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.imagen {
-  width: 100%;
+.imagen-producto {
+  width: auto;      
+  max-width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
 }
 
-.nombre {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 4px;
-  text-align: center;
-}
-
-.precio {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2563EB;
-  margin-bottom: 4px;
-}
-
-.stock {
-  font-size: 13px;
-  color: #666666;
-  margin-bottom: 12px;
-}
-
-.cantidadContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+.product-list{
+  background-color: rgb(34, 108, 158);
 }
 
 .qtyButton {
@@ -67,38 +32,7 @@
   transition: background-color 0.2s;
 }
 
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
-}
+.qtyButton:hover {
+  background-color: #ccc;
+} 
 
-.product-item {
-  flex: 1 1 250px;
-  max-width: 300px;
-}
-
-.detalle-link{
-  padding-top: 10px;
-  font-size: 22px;
-  font-style: italic;
-}
-
-/* Media query para pantallas menores a 768px */
-@media (max-width: 768px) {
-  .product-item {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  .imagenContainer {
-    width: 100%;
-    height: auto;
-  }
-
-  .imagen {
-    height: auto;
-  }
-}

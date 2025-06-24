@@ -1,5 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AuthContext = createContext();
 
@@ -35,6 +38,7 @@ export const AuthProvider = ({ children }) => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+        toast.error("Completa los campos obligatorios", { position: "top-center", autoClose: 1000, });
       return;
     }
 
@@ -55,6 +59,8 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("isAuth", "true");
         localStorage.setItem("role", foundUser.role);
 
+         toast.success("¡Inicio de sesión exitoso!", { position: "top-center", autoClose: 1000, });
+
         if (foundUser.role === "admin") {
           navigate("/admin");
         } else {
@@ -66,6 +72,9 @@ export const AuthProvider = ({ children }) => {
       setErrors({
         email: "Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
       });
+      toast.error("Error en el servidor", { position: "top-center",
+        autoClose: 1000,
+      });
     }
   };
    const logout = () => {
@@ -75,6 +84,7 @@ export const AuthProvider = ({ children }) => {
     setPassword("");
     localStorage.removeItem("isAuth");
     localStorage.removeItem("role");
+     toast.info("Sesión cerrada", { position: "top-center", autoClose: 1000, });
     navigate("/login");
   };
   return (
