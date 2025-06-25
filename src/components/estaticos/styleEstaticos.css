@@ -140,11 +140,16 @@ ul {
   nav ul {
     flex-direction: column;
     gap: 10px;
+    align-items: center;
+    padding: 0;
   }
 
   .link {
     font-size: 18px;
     text-align: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
   }
 
   .logo {
