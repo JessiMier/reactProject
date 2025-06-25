@@ -132,4 +132,3 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
 }
 
 export default FormularioEdicion;
-

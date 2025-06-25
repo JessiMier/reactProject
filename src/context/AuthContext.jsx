@@ -20,13 +20,8 @@ export const AuthProvider = ({ children }) => {
     if (storedAuth) {
       setIsAuthenticated(true);
       setRole(storedRole);
-      if (storedRole === "admin") {
-        navigate("/admin");
-      } else {
-        navigate("/");
-      }
     }
-  }, [navigate]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

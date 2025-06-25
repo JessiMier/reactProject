@@ -2,12 +2,14 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormularioProducto from "../components/FormularioProducto";
 import FormularioEdicion from "../components/FormularioEdicion";
-import { CartContext } from "../context/CartContext";
 import { AdminContext } from "../context/AdminContext";
+import { useAuth } from "../context/AuthContext";
 import Pagination from "react-bootstrap/Pagination";
 
 const Admin = () => {
-  const { setIsAuth } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { logout, role } = useAuth();
+
   const {
     productos,
     loading,
@@ -21,8 +23,6 @@ const Admin = () => {
     actulizarProducto,
     eliminarProducto,
   } = useContext(AdminContext);
-
-  const navigate = useNavigate();
 
   const [busqueda, setBusqueda] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,12 +41,6 @@ const Admin = () => {
   const currentProducts = productosFiltrados.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(productosFiltrados.length / itemsPerPage);
 
-  const handleLogout = () => {
-    setIsAuth(false);
-    localStorage.removeItem("isAuth");
-    navigate("/");
-  };
-
   return (
     <div className="container py-4">
       {loading ? (
@@ -57,15 +51,20 @@ const Admin = () => {
       ) : (
         <>
           <nav className="d-flex justify-content-between align-items-center mb-4">
-            <h2>Panel Administrativo</h2>
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={handleLogout}
-            >
-              <i className="fa-solid fa-right-from-bracket me-1"></i> Volver al
-              inicio
-            </button>
+            <h2 className="titulo-admin p-2">Panel Administrativo</h2>
+            <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 p-2">
+              <span className="text-muted small">
+                <strong className="text-white">Rol: {role}</strong>
+              </span>
+              <button className="btn btn-primary" onClick={() => navigate("/")}>
+                <i className="fa-solid fa-house me-1"></i> Ir al inicio
+              </button>
+
+              <button className="btn btn-secondary" onClick={logout}>
+                <i className="fa-solid fa-right-from-bracket me-1"></i> Cerrar
+                sesión
+              </button>
+            </div>
           </nav>
 
           <div className="mb-3">
@@ -160,6 +159,7 @@ const Admin = () => {
               </Pagination>
             </div>
           )}
+
           {open && (
             <div className="mt-5">
               <FormularioProducto onAgregar={agregarProducto} />

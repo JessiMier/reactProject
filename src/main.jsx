@@ -11,16 +11,16 @@ import { AdminProvider } from "./context/AdminContext.jsx";
 import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+    <StrictMode>
     <Router>
-      <CartProvider>
-        <AdminProvider>
-        <AuthProvider>
-          <App />
-          <ToastContainer />
-        </AuthProvider>
-        </AdminProvider>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <AdminProvider>
+            <App />
+            <ToastContainer />
+          </AdminProvider>
+        </CartProvider>
+      </AuthProvider>
     </Router>
   </StrictMode>
 );

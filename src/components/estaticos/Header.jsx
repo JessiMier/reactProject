@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./styleEstaticos.css";
 import Cart from "../Cart.jsx";
 import { CartContext } from "../../context/CartContext.jsx";
-import { useAuth } from "../../context/AuthContext.jsx"; 
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, handleDeleteFromCart } = useContext(CartContext);
-  const { isAuthenticated, logout } = useAuth(); 
+  const { isAuthenticated, logout, role } = useAuth();  
+  const navigate = useNavigate();
 
   const totalCantidad = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -37,20 +38,28 @@ const Header = () => {
             </NavLink>
           </li>
 
+          {isAuthenticated && role === "admin" && (
+            <li>
+              <button
+                className="btn btn-secondary fs-5"
+                onClick={() => navigate("/admin")}
+              >
+                Panel Admin
+              </button>
+            </li>
+          )}
+
           {!isAuthenticated && (
             <li>
-              <NavLink to="/login" className="link">
-                Tu Cuenta
+              <NavLink to="/login" className="btn btn-secondary fs-5">
+                Iniciar sesión
               </NavLink>
             </li>
           )}
 
           {isAuthenticated && (
             <li>
-              <button
-                onClick={logout}
-                className="link"
-              >
+              <button onClick={logout} className="btn btn-secondary fs-5">
                 Cerrar sesión
               </button>
             </li>
@@ -95,7 +104,4 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
 

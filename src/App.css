@@ -55,3 +55,9 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+ .titulo-admin {
+  font-family: 'Monserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ccc;
+}
