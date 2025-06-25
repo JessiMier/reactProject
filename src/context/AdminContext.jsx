@@ -39,6 +39,8 @@ export const AdminProvider = ({ children }) => {
 
   const agregarProducto = async (producto) => {
     try {
+      producto.price = parseFloat(producto.price).toFixed(2);
+
       const respuesta = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -46,9 +48,11 @@ export const AdminProvider = ({ children }) => {
         },
         body: JSON.stringify(producto),
       });
+
       if (!respuesta.ok) {
         throw new Error("Error al agregar producto");
       }
+
       await respuesta.json();
       await cargarProductos();
       setOpen(false);
@@ -63,7 +67,10 @@ export const AdminProvider = ({ children }) => {
       Swal.fire("Error", "El producto no tiene un ID válido", "error");
       return;
     }
+
     try {
+      producto.price = parseFloat(producto.price).toFixed(2);
+
       const respuesta = await fetch(`${apiUrl}/${producto.id}`, {
         method: "PUT",
         headers: {
@@ -71,7 +78,9 @@ export const AdminProvider = ({ children }) => {
         },
         body: JSON.stringify(producto),
       });
+
       if (!respuesta.ok) throw Error("Error al actualizar el producto");
+
       await respuesta.json();
       setOpenEditor(false);
       setSeleccionado(null);
@@ -99,7 +108,9 @@ export const AdminProvider = ({ children }) => {
         const respuesta = await fetch(`${apiUrl}/${id}`, {
           method: "DELETE",
         });
+
         if (!respuesta.ok) throw Error("Error al eliminar");
+
         await cargarProductos();
         Swal.fire("Eliminado", "Producto eliminado correctamente", "success");
       } catch (error) {

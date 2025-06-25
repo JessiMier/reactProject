@@ -14,7 +14,16 @@ function FormularioProducto({ onAgregar }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProducto({ ...producto, [name]: value });
+
+    let nuevoValor = value;
+
+    if (name === "price") {
+      nuevoValor = value.includes(".")
+        ? value.slice(0, value.indexOf(".") + 3)
+        : value;
+    }
+
+    setProducto({ ...producto, [name]: nuevoValor });
   };
 
   const validarFormulario = () => {
@@ -40,13 +49,21 @@ function FormularioProducto({ onAgregar }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validarFormulario()) return;
-    onAgregar(producto);
+
+    const productoFormateado = {
+      ...producto,
+      price: parseFloat(producto.price).toFixed(2),
+    };
+
+    onAgregar(productoFormateado);
+
     setProducto({
       name: "",
       price: "",
       stock: "",
       img: "",
       category: "",
+      description: "",
     });
     setErrores({});
   };
@@ -72,6 +89,7 @@ function FormularioProducto({ onAgregar }) {
             <div className="invalid-feedback">{errores.name}</div>
           )}
         </div>
+
         <div className="mb-3">
           <label className="form-label">Descripción:</label>
           <textarea
@@ -96,6 +114,7 @@ function FormularioProducto({ onAgregar }) {
             className={`form-control ${errores.price ? "is-invalid" : ""}`}
             value={producto.price}
             onChange={handleChange}
+            step="0.01"
             min="0"
           />
           {errores.price && (
